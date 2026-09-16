@@ -1,0 +1,1007 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>For Kuchupuchu ❤️</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;overflow:hidden}
+body{
+font-family:Arial,sans-serif;color:#fff;background:#05030a;
+touch-action:manipulation
+}
+
+/* CINEMATIC BACKGROUND */
+body:before{
+content:"";position:fixed;inset:-50%;
+background:
+radial-gradient(circle at 20% 30%,#8d285455 0,transparent 28%),
+radial-gradient(circle at 80% 70%,#5d246655 0,transparent 30%),
+radial-gradient(circle at 50% 50%,#bd527022 0,transparent 35%);
+animation:bg 14s ease-in-out infinite alternate;
+z-index:-3
+}
+body:after{
+content:"";position:fixed;inset:0;
+background:radial-gradient(ellipse at center,transparent 30%,#000b 100%);
+z-index:-2
+}
+@keyframes bg{
+0%{transform:scale(1) rotate(0deg)}
+100%{transform:scale(1.25) rotate(8deg)}
+}
+
+/* FLOATING LIGHTS */
+#lights{
+position:fixed;inset:0;overflow:hidden;
+pointer-events:none;z-index:-1
+}
+.light{
+position:absolute;width:4px;height:4px;border-radius:50%;
+background:#fff;opacity:.5;
+box-shadow:0 0 12px #ff9dbd;
+animation:float linear infinite
+}
+@keyframes float{
+from{transform:translateY(110vh) scale(.4);opacity:0}
+15%{opacity:.7}
+85%{opacity:.7}
+to{transform:translateY(-10vh) scale(1.2);opacity:0}
+}
+
+/* MUSIC */
+#music{
+position:fixed;top:16px;right:16px;z-index:50;
+border:1px solid #ffffff33;
+background:#ffffff15;
+backdrop-filter:blur(12px);
+color:#fff;border-radius:30px;
+padding:9px 14px;font-size:13px
+}
+
+/* SECTIONS */
+.section{
+position:absolute;inset:0;display:none;
+align-items:center;justify-content:center;
+text-align:center;padding:25px;
+opacity:0
+}
+.section.active{
+display:flex;
+animation:show .8s forwards
+}
+@keyframes show{
+from{opacity:0;transform:scale(.97)}
+to{opacity:1;transform:scale(1)}
+}
+.box{width:min(92%,650px)}
+
+h1{
+font-size:clamp(34px,10vw,70px);
+line-height:1.1;margin-bottom:18px
+}
+h2{
+font-size:clamp(25px,7vw,46px);
+margin-bottom:18px
+}
+p{
+font-size:clamp(16px,4.5vw,21px);
+line-height:1.65
+}
+.pink{color:#ff91b3}
+
+button{
+border:0;cursor:pointer
+}
+
+/* PASSWORD */
+.input{
+width:100%;padding:15px 20px;
+border:1px solid #ffffff44;
+border-radius:30px;
+background:#ffffff0d;color:white;
+font-size:17px;text-align:center;
+outline:none;
+backdrop-filter:blur(10px)
+}
+.mainBtn{
+margin-top:22px;padding:14px 27px;
+border-radius:30px;background:#fff;
+color:#171018;font-weight:bold;
+font-size:16px
+}
+.error{
+color:#ff8eaa;margin-top:12px
+}
+
+/* COUNTDOWN */
+.count{
+font-size:clamp(90px,28vw,190px);
+font-weight:bold;
+text-shadow:0 0 40px #ff5d91
+}
+
+/* HEART */
+.heart{
+font-size:75px;
+animation:heartbeat 1.2s infinite
+}
+@keyframes heartbeat{
+50%{transform:scale(1.16)}
+}
+
+/* PHOTO */
+.photoWrap{
+position:relative;width:100%;
+height:min(66vh,620px);
+display:flex;align-items:center;
+justify-content:center
+}
+.photo{
+max-width:100%;max-height:100%;
+object-fit:contain;
+border-radius:20px;
+box-shadow:0 15px 60px #000;
+animation:photoIn 1.3s
+}
+@keyframes photoIn{
+from{opacity:0;transform:scale(1.08)}
+to{opacity:1;transform:scale(1)}
+}
+.caption{
+margin-top:15px;
+font-size:16px;color:#ddd
+}
+.progress{
+height:3px;background:#ffffff22;
+border-radius:10px;
+margin:18px auto 0;
+width:80%;overflow:hidden
+}
+.progress i{
+display:block;height:100%;
+width:0;background:#fff;
+animation:progress 4s linear forwards
+}
+@keyframes progress{
+to{width:100%}
+}
+
+/* CHAT */
+.chat{
+max-width:100%;max-height:67vh;
+object-fit:contain;
+border-radius:18px;
+box-shadow:0 15px 60px #000;
+animation:photoIn 1s
+}
+
+/* VIDEO */
+video{
+max-width:100%;
+max-height:65vh;
+border-radius:20px;
+box-shadow:0 15px 60px #000
+}
+
+/* FINAL */
+.final{
+background:radial-gradient(
+circle at center,
+#681f3c55,
+transparent 55%
+)
+}
+.small{
+font-size:14px;
+color:#bbb;
+margin-top:20px
+}
+</style>
+</head>
+
+<body>
+
+<div id="lights"></div>
+
+<button id="music" onclick="toggleMusic()">🎵 Music: ON</button>
+
+<audio id="birthdayMusic"
+src="birthday-song.mp3"
+loop
+preload="auto"></audio>
+
+<audio id="proposalMusic"
+src="proposal-song.mp3"
+loop
+preload="auto"></audio>
+
+
+<!-- PASSWORD -->
+<section class="section active" id="login">
+<div class="box">
+
+<h1>
+For <span class="pink">Kuchupuchu</span> ❤️
+</h1>
+
+<p>
+A little surprise is waiting for you...
+</p>
+
+<input
+class="input"
+id="password"
+type="password"
+placeholder="Enter the password"
+>
+
+<button
+class="mainBtn"
+onclick="openSurprise()"
+>
+Open Surprise ✨
+</button>
+
+<div class="error" id="error"></div>
+
+</div>
+</section>
+
+
+<!-- COUNTDOWN -->
+<section class="section" id="countdown">
+<div class="box">
+<div class="count" id="count">3</div>
+</div>
+</section>
+
+
+<!-- BIRTHDAY -->
+<section class="section" id="birthday">
+<div class="box">
+
+<div class="heart">🎂</div>
+
+<h1>
+Happy Birthday ❤️
+</h1>
+
+<p>
+Kuchupuchu, today is all about celebrating
+<span class="pink">you</span>.
+<br><br>
+I hope this little surprise brings a smile
+to your face and reminds you how special you are.
+</p>
+
+</div>
+</section>
+
+
+<!-- PHOTOS -->
+<section class="section" id="photos">
+<div class="box">
+
+<h2>
+Our Little Memories ❤️
+</h2>
+
+<div class="photoWrap">
+<img
+class="photo"
+id="photo"
+src="photo1.jpg"
+>
+</div>
+
+<div
+class="caption"
+id="photoCaption"
+>
+A memory worth keeping...
+</div>
+
+<div class="progress">
+<i id="photoProgress"></i>
+</div>
+
+<p class="small">
+Some moments deserve to stay forever.
+</p>
+
+</div>
+</section>
+
+
+<!-- MORE -->
+<section class="section" id="more">
+<div class="box">
+
+<div class="heart">💌</div>
+
+<h1>
+There are some more too...
+</h1>
+
+<p>
+And these little moments are waiting for you.
+</p>
+
+</div>
+</section>
+
+
+<!-- CHATS -->
+<section class="section" id="chats">
+<div class="box">
+
+<h2>
+Some Little Conversations 💬
+</h2>
+
+<img
+class="chat"
+id="chat"
+src="chat1.jpg"
+>
+
+<div class="progress">
+<i id="chatProgress"></i>
+</div>
+
+</div>
+</section>
+
+
+<!-- VIDEO 1 -->
+<section class="section" id="video1">
+<div class="box">
+
+<h2>
+One More Memory 🎥
+</h2>
+
+<video
+id="vid1"
+controls
+playsinline
+src="video1.mp4"
+></video>
+
+<p class="small">
+Take your time ❤️
+</p>
+
+</div>
+</section>
+
+
+<!-- VIDEO 2 -->
+<section class="section" id="video2">
+<div class="box">
+
+<h2>
+And One More... ❤️
+</h2>
+
+<video
+id="vid2"
+controls
+playsinline
+src="video2.mp4"
+></video>
+
+<p class="small">
+Because one memory wasn't enough.
+</p>
+
+</div>
+</section>
+
+
+<!-- PROPOSAL -->
+<section class="section" id="proposal">
+<div class="box">
+
+<div class="heart">❤️</div>
+
+<h1>
+For You,
+<span class="pink">Kuchupuchu</span>
+</h1>
+
+<p>
+I don't know what every tomorrow will bring,
+but I know that the moments we share mean a lot to me.
+</p>
+
+<p style="margin-top:18px">
+So today, on your special day...
+</p>
+
+<h2 style="margin-top:22px">
+Will you keep making beautiful memories with me? 💗
+</h2>
+
+<button
+class="mainBtn"
+onclick="finish()"
+>
+Yes, always ❤️
+</button>
+
+</div>
+</section>
+
+
+<!-- FINAL -->
+<section class="section final" id="final">
+<div class="box">
+
+<div class="heart">❤️</div>
+
+<h1>
+Happy Birthday,<br>
+<span class="pink">Kuchupuchu!</span>
+</h1>
+
+<p>
+May your days be filled with happiness,
+beautiful memories and countless reasons to smile.
+</p>
+
+<p style="margin-top:20px">
+With lots of love ❤️
+</p>
+
+</div>
+</section>
+
+
+<script>
+
+/* =========================
+   BASIC SETTINGS
+========================= */
+
+const PASSWORD="Avisha+Suraj";
+
+const birthday=document.getElementById("birthdayMusic");
+const proposalSong=document.getElementById("proposalMusic");
+
+let musicOn=true;
+let photoIndex=1;
+let chatIndex=1;
+let timer;
+
+
+/* =========================
+   SECTIONS
+========================= */
+
+const sections=[
+"login",
+"countdown",
+"birthday",
+"photos",
+"more",
+"chats",
+"video1",
+"video2",
+"proposal",
+"final"
+];
+
+
+function show(id){
+
+sections.forEach(x=>{
+document.getElementById(x).classList.remove("active");
+});
+
+document.getElementById(id).classList.add("active");
+
+}
+
+
+/* =========================
+   BIRTHDAY MUSIC
+========================= */
+
+function playBirthday(){
+
+if(!musicOn)return;
+
+birthday.volume=.75;
+
+birthday.play().catch(()=>{});
+
+}
+
+
+/* =========================
+   MUSIC TOGGLE
+========================= */
+
+function toggleMusic(){
+
+musicOn=!musicOn;
+
+if(musicOn){
+
+document.getElementById("music").textContent="🎵 Music: ON";
+
+if(
+document.getElementById("proposal").classList.contains("active")||
+document.getElementById("final").classList.contains("active")
+){
+
+proposalSong.play().catch(()=>{});
+
+}else{
+
+birthday.play().catch(()=>{});
+
+}
+
+}else{
+
+birthday.pause();
+proposalSong.pause();
+
+document.getElementById("music").textContent="🔇 Music: OFF";
+
+}
+
+}
+
+
+/* =========================
+   AUTOPLAY ATTEMPT
+========================= */
+
+window.addEventListener("load",()=>{
+
+birthday.volume=.75;
+
+birthday.play().catch(()=>{});
+
+});
+
+
+/*
+Try music after first user interaction.
+This is mainly for browsers that block
+automatic audio before interaction.
+*/
+
+let firstInteractionHandled=false;
+
+["click","touchstart","keydown"].forEach(event=>{
+
+document.addEventListener(event,()=>{
+
+if(firstInteractionHandled)return;
+
+firstInteractionHandled=true;
+
+if(
+musicOn &&
+!document.getElementById("proposal").classList.contains("active") &&
+!document.getElementById("final").classList.contains("active")
+){
+
+birthday.play().catch(()=>{});
+
+}
+
+},{once:false});
+
+});
+
+
+/* =========================
+   PASSWORD + COUNTDOWN
+========================= */
+
+function openSurprise(){
+
+let value=document.getElementById("password").value;
+
+if(value!==PASSWORD){
+
+document.getElementById("error").textContent=
+"Wrong password ❤️";
+
+return;
+
+}
+
+document.getElementById("error").textContent="";
+
+playBirthday();
+
+show("countdown");
+
+let n=3;
+
+document.getElementById("count").textContent=n;
+
+clearInterval(timer);
+
+timer=setInterval(()=>{
+
+n--;
+
+if(n>0){
+
+document.getElementById("count").textContent=n;
+
+}else{
+
+clearInterval(timer);
+
+show("birthday");
+
+setTimeout(()=>{
+
+show("photos");
+
+startPhotos();
+
+},4500);
+
+}
+
+},1000);
+
+}
+
+
+document
+.getElementById("password")
+.addEventListener("keydown",e=>{
+
+if(e.key==="Enter"){
+openSurprise();
+}
+
+});
+
+
+/* =========================
+   AUTOMATIC PHOTO SLIDER
+========================= */
+
+const captions=[
+
+"A memory worth keeping...",
+
+"One moment, one smile, one beautiful memory.",
+
+"Some memories feel different. ❤️",
+
+"Little moments, big meaning.",
+
+"And this one will always be special."
+
+];
+
+
+function startPhotos(){
+
+photoIndex=1;
+
+changePhoto();
+
+
+setTimeout(()=>{
+
+if(
+document
+.getElementById("photos")
+.classList.contains("active")
+){
+
+show("more");
+
+setTimeout(()=>{
+
+show("chats");
+
+startChats();
+
+},3500);
+
+}
+
+},22000);
+
+}
+
+
+function changePhoto(){
+
+let img=document.getElementById("photo");
+
+img.style.animation="none";
+
+void img.offsetWidth;
+
+img.style.animation="photoIn 1.3s";
+
+img.src="photo"+photoIndex+".jpg";
+
+document.getElementById("photoCaption")
+.textContent=captions[photoIndex-1];
+
+
+let bar=document.getElementById("photoProgress");
+
+bar.style.animation="none";
+
+void bar.offsetWidth;
+
+bar.style.animation=
+"progress 4s linear forwards";
+
+
+if(photoIndex<5){
+
+setTimeout(()=>{
+
+photoIndex++;
+
+changePhoto();
+
+},4000);
+
+}
+
+}
+
+
+/* =========================
+   AUTOMATIC CHAT SLIDER
+========================= */
+
+function startChats(){
+
+chatIndex=1;
+
+changeChat();
+
+
+setTimeout(()=>{
+
+if(
+document
+.getElementById("chats")
+.classList.contains("active")
+){
+
+show("video1");
+
+}
+
+},36000);
+
+}
+
+
+function changeChat(){
+
+let img=document.getElementById("chat");
+
+img.style.animation="none";
+
+void img.offsetWidth;
+
+img.style.animation="photoIn 1s";
+
+img.src="chat"+chatIndex+".jpg";
+
+
+let bar=document.getElementById("chatProgress");
+
+bar.style.animation="none";
+
+void bar.offsetWidth;
+
+bar.style.animation=
+"progress 4s linear forwards";
+
+
+if(chatIndex<9){
+
+setTimeout(()=>{
+
+chatIndex++;
+
+changeChat();
+
+},4000);
+
+}
+
+}
+
+
+/* =========================
+   VIDEO MUSIC DUCKING
+========================= */
+
+/*
+Normal birthday music:
+75% volume
+
+While video is playing:
+12% volume
+
+This lets the video remain clear while
+the birthday song continues softly.
+*/
+
+const videos=[
+document.getElementById("vid1"),
+document.getElementById("vid2")
+];
+
+
+videos.forEach(video=>{
+
+/* VIDEO STARTS */
+
+video.addEventListener("play",()=>{
+
+if(musicOn){
+
+birthday.volume=.12;
+
+}
+
+});
+
+
+/* VIDEO PAUSED */
+
+video.addEventListener("pause",()=>{
+
+if(
+musicOn &&
+!video.ended &&
+!document.getElementById("proposal").classList.contains("active")
+){
+
+birthday.volume=.75;
+
+}
+
+});
+
+
+/* VIDEO ENDS */
+
+video.addEventListener("ended",()=>{
+
+if(musicOn){
+
+birthday.volume=.75;
+
+}
+
+});
+
+});
+
+
+/* =========================
+   VIDEO FLOW
+========================= */
+
+document
+.getElementById("vid1")
+.addEventListener("ended",()=>{
+
+show("video2");
+
+});
+
+
+document
+.getElementById("vid2")
+.addEventListener("ended",()=>{
+
+goProposal();
+
+});
+
+
+/* =========================
+   PROPOSAL
+========================= */
+
+function goProposal(){
+
+/* Stop videos */
+
+document.getElementById("vid1").pause();
+document.getElementById("vid2").pause();
+
+
+/* Stop birthday music */
+
+birthday.pause();
+
+birthday.volume=.75;
+
+
+/* Start proposal music */
+
+if(musicOn){
+
+proposalSong.currentTime=0;
+
+proposalSong.volume=.8;
+
+proposalSong.play().catch(()=>{});
+
+}
+
+
+show("proposal");
+
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+function finish(){
+
+show("final");
+
+if(musicOn){
+
+proposalSong.play().catch(()=>{});
+
+}
+
+}
+
+
+/* =========================
+   FLOATING LIGHTS
+========================= */
+
+for(let i=0;i<35;i++){
+
+let x=document.createElement("span");
+
+x.className="light";
+
+x.style.left=Math.random()*100+"%";
+
+x.style.animationDuration=
+(7+Math.random()*10)+"s";
+
+x.style.animationDelay=
+(-Math.random()*15)+"s";
+
+x.style.opacity=
+.2+Math.random()*.5;
+
+document
+.getElementById("lights")
+.appendChild(x);
+
+}
+
+</script>
+
+</body>
+  </html>
